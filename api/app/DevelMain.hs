@@ -6,7 +6,7 @@
 --
 -- 1. Start up GHCi
 --
--- $ stack ghci ese-trello-api:lib --no-load --work-dir .stack-work-devel
+-- $ stack ghci ese-trello:lib --no-load --work-dir .stack-work-devel
 --
 -- 2. Load this module
 --

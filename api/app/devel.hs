@@ -1,5 +1,5 @@
 {-# LANGUAGE PackageImports #-}
-import "ese-trello-api" Application (develMain)
+import "ese-trello" Application (develMain)
 import Prelude (IO)
 
 main :: IO ()

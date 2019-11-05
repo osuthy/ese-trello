@@ -1,4 +1,4 @@
-name:    ese-trello-api
+name:    ese-trello
 version: "0.0.0"
 
 dependencies:
@@ -63,7 +63,7 @@ library:
 
 # Runnable executable for our application
 executables:
-  ese-trello-api:
+  ese-trello:
     main: main.hs
     source-dirs: app
     ghc-options:
@@ -71,19 +71,19 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - ese-trello-api
+    - ese-trello
     when:
     - condition: flag(library-only)
       buildable: false
 
 # Test suite
 tests:
-  ese-trello-api-test:
+  ese-trello-test:
     main: Spec.hs
     source-dirs: test
     ghc-options: -Wall
     dependencies:
-    - ese-trello-api
+    - ese-trello
     - hspec >=2.0.0
     - yesod-test
 

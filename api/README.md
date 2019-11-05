@@ -3,10 +3,10 @@
 After installing Postgres, run:
 
 ```
-createuser ese-trello-api --pwprompt --superuser
-# Enter password ese-trello-api when prompted
-createdb ese-trello-api
-createdb ese-trello-api_test
+createuser ese-trello --pwprompt --superuser
+# Enter password ese-trello when prompted
+createdb ese-trello
+createdb ese-trello_test
 ```
 
 ## Haskell Setup
@@ -31,7 +31,7 @@ As your code changes, your site will be automatically recompiled and redeployed 
 ## Tests
 
 ```
-stack test --flag ese-trello-api:library-only --flag ese-trello-api:dev
+stack test --flag ese-trello:library-only --flag ese-trello:dev
 ```
 
 (Because `yesod devel` passes the `library-only` and `dev` flags, matching those flags means you don't need to recompile between tests and development, and it disables optimization to speed up your test compile times).

@@ -5,7 +5,7 @@ database:
   # would like to have environment variable overrides, you could instead use
   # something like:
   #
-  #   database: "_env:PGDATABASE:ese-trello-api_test"
-  database: ese-trello-api_test
+  #   database: "_env:PGDATABASE:ese-trello_test"
+  database: ese-trello_test
 
 auth-dummy-login: true

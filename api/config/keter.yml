@@ -15,8 +15,8 @@ stanzas:
     #
     # The path given is for Stack projects. If you're still using cabal, change
     # to
-    # exec: ../dist/build/ese-trello-api/ese-trello-api
-    exec: ../dist/bin/ese-trello-api
+    # exec: ../dist/build/ese-trello/ese-trello
+    exec: ../dist/bin/ese-trello
 
     # Command line options passed to your application.
     args: []
@@ -25,7 +25,7 @@ stanzas:
       # You can specify one or more hostnames for your application to respond
       # to. The primary hostname will be used for generating your application
       # root.
-      - www.ese-trello-api.com
+      - www.ese-trello.com
 
     # Enable to force Keter to redirect to https
     # Can be added to any stanza
@@ -34,7 +34,7 @@ stanzas:
   # Static files.
   - type: static-files
     hosts:
-      - static.ese-trello-api.com
+      - static.ese-trello.com
     root: ../static
 
     # Uncomment to turn on directory listings.
@@ -44,9 +44,9 @@ stanzas:
   - type: redirect
 
     hosts:
-      - ese-trello-api.com
+      - ese-trello.com
     actions:
-      - host: www.ese-trello-api.com
+      - host: www.ese-trello.com
         # secure: false
         # port: 80
 
