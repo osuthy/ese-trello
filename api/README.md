@@ -5,10 +5,10 @@
 $ postgres -D /usr/local/var/postgres &
 
 # ese-trelloユーザを作成
-$ psql -f enviroment/create_user.sql -U YOUR_SUPERUSER_NAME -d postgres
+$ psql -f enviroment/create_user.sql -U YOUR_SUPERUSER_NAME(macのデフォルトはmacのユーザ名) -d postgres
 
 #ese-trello ese-trello_test DBを作成
-$ psql -f enviroment/create_database.sql -U YOUR_SUPERUSER_NAME -d postgres
+$ psql -f enviroment/create_database.sql -U YOUR_SUPERUSER_NAME(macのデフォルトはmacのユーザ名) -d postgres
 ```
 
 
