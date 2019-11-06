@@ -1,13 +1,16 @@
-## Database Setup
-
-After installing Postgres, run:
+## postgresqlのセットアップ
 
 ```
-createuser ese-trello --pwprompt --superuser
-# Enter password ese-trello when prompted
-createdb ese-trello
-createdb ese-trello_test
+# pstgresqlをデフォルトのクラスタを使ってバックグラウンドで起動
+$ postgres -D /usr/local/var/postgres &
+
+# ese-trelloユーザを作成
+$ psql -f enviroment/create_user.sql -U YOUR_SUPERUSER_NAME -d postgres
+
+#ese-trello ese-trello_test DBを作成
+$ psql -f enviroment/create_database.sql -U YOUR_SUPERUSER_NAME -d postgres
 ```
+
 
 ## Haskell Setup
 
