@@ -1,7 +1,7 @@
 import React from 'react';
-import './BoardMenu.css';
+import './BoardMenu.scss';
 
-class BoardMenu extends React.Component {
+export default class BoardMenu extends React.Component {
     render() {
         return (
             <div className="menu">
@@ -10,5 +10,3 @@ class BoardMenu extends React.Component {
         )
     }
 }
-
-export default BoardMenu;
