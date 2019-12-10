@@ -9,15 +9,15 @@ export default class App extends React.Component {
       <div className="App">
         <header className="App-header">
           Hello!
-      </header>
-        <body className="board-container">
+        </header>
+        <div className="board-container">
           <div className="board-menu">
             <BoardMenu></BoardMenu>
           </div>
           <div className="board-contents">
             <BoardContents></BoardContents>
           </div>
-        </body>
+        </div>
       </div>
     );
   }
