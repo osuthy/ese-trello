@@ -39,10 +39,23 @@
 
     .section-item {
         width: 180px;
+        height: 40px;
         margin: 10px;
         margin-right: 2px;
         padding: 5px;
         border: solid;
         background-color: thistle;
+
+        &__name {
+          font-size: 14px;
+          font-weight: 700;
+        }
+
+        &__icon {
+          color: white;
+          font-size: 12px;
+          margin-left: 160px;
+          margin-top: 3px;
+        }
     }
 }

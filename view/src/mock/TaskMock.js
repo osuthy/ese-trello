@@ -1,6 +1,3 @@
-import React from 'react';
-
-
 export function findPersonalTasks() {
     return [
         new Task(1, "Javaプロジェクトのボード"),
