@@ -6,27 +6,30 @@ class BoardContents extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = { focus: false }
+        this._onBlur = this._onBlur.bind(this)
+        this._onFocus = this._onFocus.bind(this)
+        this.state = {
+            focus: false,
+            hoverTask: null
+        }
     }
 
-    _onFocus = () => {
+    _onFocus = (taskId) => {
         if (!this.state.focus) {
             this.setState({
                 focus: true,
+                hoverTask: taskId
             });
         }
     }
 
-    _onBlur = () => {
+    _onBlur = (taskId) => {
         if (this.state.focus) {
             this.setState({
                 focus: false,
+                hoverTask: taskId
             });
         }
-    }
-
-    _hoge() {
-        console.log("hoge")
     }
 
     render() {
@@ -38,7 +41,7 @@ class BoardContents extends React.Component {
                         <div className="header__name">スター付きボード</div>
                     </div>
                     <ul className="section-list">
-                        {/* {findPersonalTasks().map(c => <li className="section-item">{c}</li>)} */}
+                        {findPersonalTasks().map((task) => <li className="section-item" key={task.id}>{task.name}</li>)}
                     </ul>
                 </div>
                 <div className="board-section personal-board">
@@ -47,7 +50,7 @@ class BoardContents extends React.Component {
                         <div className="header__name">パーソナルボード</div>
                     </div>
                     <ul className="section-list">
-                        {findPersonalTasks().map((task) => <li className="section-item" key={task}>{task}</li>)}
+                        {findPersonalTasks().map((task) => <li className="section-item" key={task.id}>{task.name}</li>)}
                     </ul>
                 </div>
                 <div className="board-section team-board">
@@ -57,12 +60,13 @@ class BoardContents extends React.Component {
                     </div>
                     <ul className="section-list">
                         {findTeamTasks().map(task =>
-                            <li className="section-item" key={task}
-                                onMouseOver={this._onFocus}
-                                onMouseOut={this._onBlur}>
-                                <span>{task}</span>
-                                {this.state.focus ? <div className="star">ほし</div> : null}
-                            </li>)}
+                            <li className="section-item" key={task.id}
+                                onMouseOver={this._onFocus.bind(this, task.id)}
+                                onMouseOut={this._onBlur.bind(this, task.id)}>
+                                <span>{task.name}</span>
+                                {this.state.focus && this.state.hoverTask == task.id ? <div className="section_item">☆</div> : null}
+                            </li>
+                        )}
                     </ul>
                 </div>
             </div>
