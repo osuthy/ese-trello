@@ -78,12 +78,12 @@ class BoardContents extends React.Component {
                     <ul className="section-list">
                         {findTeamTasks().map(task =>
                             <div className="section-item" key={task.id}
-                                onMouseOver={this._onFocus.bind(this, task.id)}
-                                onMouseOut={this._onBlur.bind(this, task.id)}>
+                                onMouseEnter={this._onFocus.bind(this, task.id)}
+                                onMouseLeave={this._onBlur.bind(this, task.id)}>
                                 <span className="section-item__name">{task.name}</span>
                                 {this.state.focus && this.state.hoverTask === task.id
-                                    ? <div className="section-item__icon"  style={{backgroundColor: "red"}}
-                                            onClick={this._addFaoriteTasks(this, task.id)}>☆</div>
+                                    ? <div className="section-item__icon"
+                                            onClick={this._addFaoriteTasks.bind(this, task.id)}>☆</div>
                                     : null}
                             </div>
                         )}
