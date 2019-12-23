@@ -9,7 +9,7 @@ class BoardContents extends React.Component {
         this.state = {
             focus: false,
             hoverTask: null,
-            favotiteTasks: []
+            favoriteTasks: []
         }
     }
 
@@ -36,10 +36,12 @@ class BoardContents extends React.Component {
     }
 
     _addFaoriteTasks = (task) => {
-        if (this.state.favotiteTasks.some(favoriteTask => favoriteTask.id === task.id)) {
+        if (this.state.favoriteTasks.some(favoriteTask => favoriteTask.id === task.id)) {
             return
         } else {
-            this.state.favotiteTasks.push(task)
+            this.setState({
+                favoriteTasks: this.state.favoriteTasks.concat(task)
+            })
         }
     }
 
@@ -66,7 +68,7 @@ class BoardContents extends React.Component {
                         <div className="header__name">スター付きボード</div>
                     </div>
                     <ul className="section-list">
-                        {this.state.favotiteTasks.map((task) => <li className="section-item" key={task.id}>{task.name}</li>)}
+                        {this.state.favoriteTasks.map((task) => <li className="section-item" key={task.id}>{task.name}</li>)}
                     </ul>
                 </div>
                 <div className="board-section personal-board">
