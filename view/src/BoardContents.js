@@ -6,13 +6,16 @@ class BoardContents extends React.Component {
 
     constructor(props) {
         super(props)
-        this._onBlur = this._onBlur.bind(this)
-        this._onFocus = this._onFocus.bind(this)
         this.state = {
             focus: false,
-            hoverTask: null
+            hoverTask: null,
+            favotiteTasks: ['hoge']
         }
     }
+
+    // componentDidMount() {
+
+    // }
 
     _onFocus = (taskId) => {
         if (!this.state.focus) {
@@ -30,6 +33,12 @@ class BoardContents extends React.Component {
                 hoverTask: taskId
             });
         }
+    }
+
+    _addFaoriteTasks = (taskId) => {
+        // this.state.favotiteTasks.push(taskId);
+        // console.log(this.state.favotiteTasks)
+        console.log("clickされたよ")
     }
 
     render() {
@@ -56,7 +65,7 @@ class BoardContents extends React.Component {
                                 onMouseOut={this._onBlur.bind(this, task.id)}>
                                 <span className="section-item__name">{task.name}</span>
                                 {this.state.focus && this.state.hoverTask === task.id
-                                    ? <div className="section-item__icon">☆</div>
+                                    ? <span className="section-item__icon">☆</span>
                                     : null}
                             </div>)}
                     </ul>
@@ -73,7 +82,8 @@ class BoardContents extends React.Component {
                                 onMouseOut={this._onBlur.bind(this, task.id)}>
                                 <span className="section-item__name">{task.name}</span>
                                 {this.state.focus && this.state.hoverTask === task.id
-                                    ? <div className="section-item__icon">☆</div>
+                                    ? <div className="section-item__icon"  style={{backgroundColor: "red"}}
+                                            onClick={this._addFaoriteTasks(this, task.id)}>☆</div>
                                     : null}
                             </div>
                         )}
