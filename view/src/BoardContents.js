@@ -9,7 +9,7 @@ class BoardContents extends React.Component {
         this.state = {
             focus: false,
             hoverTask: null,
-            favotiteTasks: ['hoge']
+            favotiteTasks: []
         }
     }
 
@@ -35,20 +35,24 @@ class BoardContents extends React.Component {
         }
     }
 
-    _addFaoriteTasks = (taskId) => {
-        console.log("clickされたよ")
+    _addFaoriteTasks = (task) => {
+        if (this.state.favotiteTasks.some(favoriteTask => favoriteTask.id === task.id)) {
+            return
+        } else {
+            this.state.favotiteTasks.push(task)
+        }
     }
 
     _mouseEvent(task) {
         return (
             <div className="section-item" key={task.id}
-                 onMouseEnter={this._onFocus.bind(this, task.id)}
-                 onMouseLeave={this._onBlur.bind(this, task.id)}>
+                onMouseEnter={this._onFocus.bind(this, task.id)}
+                onMouseLeave={this._onBlur.bind(this, task.id)}>
                 <span className="section-item__name">{task.name}</span>
-                    {this.state.focus && this.state.hoverTask === task.id
-                        ? <div className="section-item__icon"
-                               onClick={this._addFaoriteTasks.bind(this, task.id)}>☆</div>
-                        : null}
+                {this.state.focus && this.state.hoverTask === task.id
+                    ? <div className="section-item__icon"
+                        onClick={this._addFaoriteTasks.bind(this, task)}>☆</div>
+                    : null}
             </div>
         )
     }
@@ -62,7 +66,7 @@ class BoardContents extends React.Component {
                         <div className="header__name">スター付きボード</div>
                     </div>
                     <ul className="section-list">
-                        {findPersonalTasks().map((task) => <li className="section-item" key={task.id}>{task.name}</li>)}
+                        {this.state.favotiteTasks.map((task) => <li className="section-item" key={task.id}>{task.name}</li>)}
                     </ul>
                 </div>
                 <div className="board-section personal-board">
