@@ -6,7 +6,7 @@
 {-# LANGUAGE ViewPatterns #-}
 {-# LANGUAGE RecordWildCards #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
-module Application
+module Application -- Applicationで定義されている一部のメンバのみをエクスポート
     ( getApplicationDev
     , appMain
     , develMain
@@ -20,7 +20,7 @@ module Application
     , db
     ) where
 
-import Control.Monad.Logger                 (liftLoc, runLoggingT)
+import Control.Monad.Logger                 (liftLoc, runLoggingT) -- liftLocとrunLoggingTのみをインポート
 import Database.Persist.Postgresql          (createPostgresqlPool, pgConnStr,
                                              pgPoolSize, runSqlPool)
 import Import

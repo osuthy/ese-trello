@@ -9,7 +9,7 @@ data Person = Person {
 } deriving Show
 
 instance ToJSON Person where
-  toJSON (Person name age) =
+  toJSON (Person name age) = -- パターンマッチで引数に入ってきたPersonのnameとageを変数nameとageにバインド
     object ["name" .= name, "age" .= age]
 
 

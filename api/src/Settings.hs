@@ -1,8 +1,10 @@
-{-# LANGUAGE CPP               #-}
-{-# LANGUAGE NoImplicitPrelude #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards   #-}
-{-# LANGUAGE TemplateHaskell   #-}
+-- この部分はプラグマというコンパイル前に実効される特殊な命令になっている
+{-# LANGUAGE CPP               #-} -- C言語のプリプロセッサを有効にする ※#ifなどが使えるようになる
+{-# LANGUAGE NoImplicitPrelude #-} -- デフォルトでインポートされているPreludeパッケージを無効にする. PreludeはIntやMonadを定義してある標準ライブラリ(javaのjava.langパッケージみたいなもん)
+{-# LANGUAGE OverloadedStrings #-} -- StringリテラルをText型として扱う
+{-# LANGUAGE RecordWildCards   #-} -- レコードワイルドカードを有効にする({..}って書いてる部分がレコードワイルドカード)
+{-# LANGUAGE TemplateHaskell   #-} -- 関数以外の部分に処理をかける状態にする
+
 -- | Settings are centralized, as much as possible, into this file. This
 -- includes database connection settings, static file locations, etc.
 -- In addition, you can configure a number of different aspects of Yesod
@@ -10,8 +12,9 @@
 -- declared in the Foundation.hs file.
 module Settings where
 
-import           ClassyPrelude.Yesod
+import           ClassyPrelude.Yesod -- Yesod用のPreludeを利用
 import qualified Control.Exception           as Exception
+-- Result (..)は型Resultの型コンストラクタを全て(Error StringとSuccess a)インポートしている。
 import           Data.Aeson                  (Result (..), fromJSON, withObject,
                                               (.!=), (.:?))
 import           Data.FileEmbed              (embedFile)
@@ -92,7 +95,7 @@ instance FromJSON AppSettings where
 
         appAuthDummyLogin         <- o .:? "auth-dummy-login"      .!= dev
 
-        return AppSettings {..}
+        return AppSettings {..} -- {..}がレコードワイルドカード、多分上で宣言してる変数が勝手にAppSettingsに渡されてる
 
 -- | Settings for 'widgetFile', such as which template languages to support and
 -- default Hamlet settings.

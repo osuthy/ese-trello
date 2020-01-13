@@ -9,7 +9,7 @@ import Import
 
 getProfileR :: Handler Html
 getProfileR = do
-    (_, user) <- requireAuthPair
+    (_, user) <- requireAuthPair -- Monad (,)の値を取り出しつつパターンマッチして変数にバインド
     defaultLayout $ do
-        setTitle . toHtml $ userIdent user <> "'s User page"
+        setTitle . toHtml $ userIdent user <> "'s User page" -- 文字列結合
         $(widgetFile "profile")

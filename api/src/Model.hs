@@ -16,5 +16,8 @@ import Database.Persist.Quasi
 -- You can find more information on persistent and how to declare entities
 -- at:
 -- http://www.yesodweb.com/book/persistent/
-share [mkPersist sqlSettings, mkMigrate "migrateAll"]
+share [mkPersist sqlSettings, mkMigrate "migrateAll"] -- TemplateHaskellの効果でスクリプトのように処理を書る
     $(persistFileWith lowerCaseSettings "config/models.persistentmodels")
+
+-- TemplateHaskellの使い方はここに載ってた
+-- https://qiita.com/YoshikuniJujo/items/a8373c1bd1986ced9d5d
