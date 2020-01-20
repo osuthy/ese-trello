@@ -18,3 +18,4 @@ Comment json -- Adding "json" causes ToJSON and FromJSON instances to be derived
     deriving Show
 Task
    name Text
+   deriving Show
