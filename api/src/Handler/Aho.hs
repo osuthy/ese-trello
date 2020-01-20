@@ -15,5 +15,6 @@ instance ToJSON Person where
 
 getAhoR :: Handler Value
 getAhoR = do
+  task <- runDB $ selectList [] [Asc TaskId]
   let aho = Person { name = "aho", age = 12 }
-  jsonToRepJson $ aho
+  jsonToRepJson $ trace (show "ahoooooooo") $ aho
