@@ -23,5 +23,5 @@ taskN (Task x) = x
 getAhoR :: Handler Value
 getAhoR = do
   tasks <- runDB $ selectList [] [Asc TaskId]
-  let task = Task { taskName = taskN(entityVal $ Prelude.head tasks)}
+  let task = Prelude.map (\entity -> Task{ taskName = taskN $ entityVal(entity)}) tasks
   jsonToRepJson $ trace (show tasks) $ task
